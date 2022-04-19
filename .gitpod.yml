@@ -1,0 +1,8 @@
+tasks:
+  - before: nvm install 12
+    init: npm run compile:sails && npm run compile:ng
+    command: npm run dev:pod
+# Ports to expose on workspace startup
+ports:
+  - port: 1500
+    onOpen: open-preview

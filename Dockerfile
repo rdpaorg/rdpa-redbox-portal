@@ -6,7 +6,10 @@ RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/
 RUN chmod +x /usr/local/bin/dumb-init
 RUN echo "Australia/Brisbane" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 COPY --chown=node:node . /opt/redbox-portal
-RUN chown -R node:node /opt/redbox-portal; ls -l /opt; ls -l /opt/redbox-portal;
+COPY . /opt/redbox-portal
+#RUN ["chmod", "777", "/opt"]
+#RUN chmod -R 777 /opt/redbox-portal;
+RUN chown node:node /opt/redbox-portal -R; ls -l /opt; ls -l /opt/redbox-portal;
 USER node
 RUN echo "Permissions should be set, running as 'node' user, dumping permissions again: "; ls -l /opt; ls -l /opt/redbox-portal;
 CMD NODE_ENV=$node_env node app.js

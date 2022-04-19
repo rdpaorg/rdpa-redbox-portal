@@ -5,7 +5,11 @@ services:
   redboxportal:
     # uncomment this if you are making changes to the Dockerfile
     # build: .
+<<<<<<< HEAD
     image: qcifengineering/redbox-portal:develop
+=======
+    image: hillsweb/redbox
+>>>>>>> gitpod config
     ports:
       - "1500:1500"
     user: node
