@@ -57,6 +57,18 @@ module.exports = {
           },
           {
             class: "AnchorOrButton",
+            roles: ['Admin', 'Librarians'],
+            viewOnly: true,
+            definition: {
+              label: '@view-record-audit-link',
+              value: '/@branding/@portal/audit/view/@oid',
+              cssClasses: 'btn btn-large btn-info margin-15',
+              controlType: 'anchor'
+            },
+            variableSubstitutionFields: ['value']
+          },
+          {
+            class: "AnchorOrButton",
             viewOnly: true,
             definition: {
               label: '@dmp-create-datapublication-link',

@@ -171,6 +171,8 @@ module.exports.routes = {
   'get /:branding/:portal/admin/roles/get': 'AdminController.getBrandRoles',
   'post /:branding/:portal/admin/roles/user': 'AdminController.updateUserRoles',
   'get /:branding/:portal/record/metadata/:oid': 'RecordController.getMeta',
+  'get /:branding/:portal/record/audit/:oid': 'RecordController.getAudit',
+  'get /:branding/:portal/audit/view/:oid': 'RecordController.getAudit',
   'get /:branding/:portal/record/form/:name': 'RecordController.getForm',
   'get /:branding/:portal/record/form/:name/:oid': 'RecordController.getForm',
   'get /:branding/:portal/record/search/:type': 'RecordController.search',

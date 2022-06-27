@@ -115,6 +115,7 @@ export module Services {
       'create',
       'updateMeta',
       'getMeta',
+      'getAudit',
       'hasEditAccess',
       'hasViewAccess',
       'search',
@@ -265,6 +266,10 @@ export module Services {
       return this.storageService.getMeta(oid);
     }
 
+    getAudit(oid: any): Promise < any > {
+      return this.storageService.getAudit(oid);
+    }
+
     createBatch(type: any, data: any, harvestIdFldName: any): Promise < any > {
       return this.storageService.createBatch(type, data, harvestIdFldName);
     }
@@ -288,7 +293,6 @@ export module Services {
     updateNotificationLog(oid: any, record: any, options: any): Promise < any > {
       return this.storageService.updateNotificationLog(oid, record, options);
     }
-
 
     public getRecords(workflowState, recordType = undefined, start, rows = 10, username, roles, brand, editAccessOnly = undefined, packageType = undefined, sort = undefined, fieldNames = undefined, filterString = undefined): Promise < any > {
       return this.storageService.getRecords(workflowState, recordType, start, rows, username, roles, brand, editAccessOnly, packageType, sort, fieldNames, filterString);

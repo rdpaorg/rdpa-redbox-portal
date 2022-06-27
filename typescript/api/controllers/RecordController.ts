@@ -81,6 +81,7 @@ export module Controllers {
       'getType',
       'getWorkflowSteps',
       'getMeta',
+      'getAudit',
       'getTransferResponsibilityConfig',
       'updateResponsibilities',
       'doAttachment',
@@ -104,6 +105,24 @@ export module Controllers {
       const brand = BrandingService.getBrand(req.session.branding);
       const oid = req.param('oid') ? req.param('oid') : '';
       var obs = Observable.fromPromise(this.recordsService.getMeta(oid));
+      return obs.subscribe(record => {
+        this.hasViewAccess(brand, req.user, record).subscribe(hasViewAccess => {
+          if (hasViewAccess) {
+            return res.json(record.metadata);
+          } else {
+            return res.json({
+              status: "Access Denied"
+            });
+          }
+
+        });
+      });
+    }
+
+    public getAudit(req, res) {
+      const brand = BrandingService.getBrand(req.session.branding);
+      const oid = req.param('oid') ? req.param('oid') : '';
+      var obs = Observable.fromPromise(this.recordsService.getAudit(oid));
       return obs.subscribe(record => {
         this.hasViewAccess(brand, req.user, record).subscribe(hasViewAccess => {
           if (hasViewAccess) {
@@ -847,7 +866,6 @@ export module Controllers {
           }
         });
     }
-
 
 
     protected getRecord(oid) {
